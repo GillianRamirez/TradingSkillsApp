@@ -1,0 +1,9 @@
+{%extends "index.html" %}
+{% block content %}
+home page
+<a href="{% url "html:logout"%}">logout</a>
+{% endblock content%}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
