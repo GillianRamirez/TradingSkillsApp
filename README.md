@@ -7,6 +7,6 @@ Functionality: Only the share selection, stock graph and share price generation 
 Technologies used: Html, Css, Django, python, SQL, Plotly, Yfinance
 
 Ideas for future improvement:
-- less burnout
+- taking breaks
 - Deliver a full functioning web app
 - neat code (css didn't work halfway through, so I had to manually input style code)
