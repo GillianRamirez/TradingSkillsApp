@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<header  class="header"> 
+  <h1>Type-Trader Investments</h1>
+ <h3>A Trade Stock Simulator</h3> 
+</header>
+{% include 'navbar.html' %}
+<div class="content" style="display:flex;">
+  <div id="left-section" class="content-flex">
+    <h1  class="design">Select Company</h1>
+
+    <form method="POST" action="" class="design">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit"  class="design">Submit</button> <!-- to generate stock graph using yfinance and plotly -->
+    </form>
+    <div class="design">
+    {{ chart_html|safe }}
+    </div>
+    {% if share_price %}
+    <h2  class="design">Share Price: ${{ share_price|floatformat:2 }}</h2>
+    {% endif %}
+
+    <form method="POST" action="{% url 'App2:add_stock'%}">
+      {% csrf_token %}
+      <input type="hidden" name="company" value="{{ form.company.value }}">
+      <input type="number" name="buy_shares" min="1" max="10" placeholder="Shares to buy"  class="design" required>
+      <button type="submit"  class="design">Buy</button>
+    </form>
+  </div>
+{% endblock %}

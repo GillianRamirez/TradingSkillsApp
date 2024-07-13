@@ -1,18 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=0">
         <title>
-            {% block title %} No Title {% endblock %}
+            {% block title %} Type-Trader Investments {% endblock %}
         </title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     </head>
     <body>
-        {% block content %}{% endblock content %}
+        <div id="content", name="content", class="main">
+        {% block content %}{%include 'navbar.html'%} {% endblock %}
+        </div>
     </body>
 </html>

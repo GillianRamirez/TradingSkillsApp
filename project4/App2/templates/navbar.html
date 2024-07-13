@@ -1,0 +1,21 @@
+{% block content %}
+
+<div class="sidenav">
+    <li>
+        <h3 style="color:#ffffff;"> Welcome, {{user}}</h3>
+    </li>
+    <li>
+        <a href="/">Home</a>
+    </li>
+    <li>
+        <a href="/assets/add_stock">Portfolio</a>
+    </li>
+    <li>
+        <a href="/contact">Contact</a>
+    </li>
+    <li>
+        <a href="{% url "App2:login"%}">logout</a>
+    </li>
+</div>
+
+{% endblock %}

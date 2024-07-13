@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<header class="header"> 
+  <h1>Type-Trader Investments</h1>
+ <h3>A Trade Stock Simulator</h3> 
+</header>
+{% include 'navbar.html' %}
+<div class="content-flex">
+<h2 class="design">Your Portfolio</h2>
+<h3 class="design" >Balance: ${{ balance |floatformat:2}}</h3>
+<table class="design">
+    <thead>
+      <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">Stock ID</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Share Price</th>
+        <th scope="col">Total Value</th>
+        <th scope="col"><form action="{% url 'App2:reset_portfolio' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="design" onclick="return confirm('Are you sure you want to reset your portfolio? This action cannot be undone.')">Reset Portfolio</button>
+        </form></th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for portfolio in stock_portfolios %}
+        <tr>
+          <td>{{ portfolio.user_id }}</td>
+          <td>{{ portfolio.stock_id }}</td>
+          <td>{{ portfolio.shares }}</td>
+          <td>${{ portfolio.share_price|floatformat:2 }}</td>
+          <td>${{ portfolio.total_value|floatformat:2 }}</td>
+          <td>
+            <form action="{% url 'App2:sell_stock' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="stock_id" value="{{ portfolio.stock_id }}">
+              <input type="number" name="sell_shares" min="1" max="{{ portfolio.shares }}" placeholder="Sell Shares">
+              <button type="submit">Sell</button>
+            </form>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">No stocks in portfolio</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  <div class="design">
+    {% if balance_history_chart %}
+        {{ balance_history_chart|safe }}
+    {% else %}
+        <p>No transaction history data available.</p>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}

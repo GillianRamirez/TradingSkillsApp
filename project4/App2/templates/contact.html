@@ -1,21 +1,29 @@
 {% extends "index.html" %}
+{% load static %}
 {% block title %} Contact Page {% endblock %}
 
-{% block sidebar %}
-<ul>
-    <li><a href="/">Home</a></li>
-</ul>
-{% endblock %}
-
 {% block content %}
-<form action="/contact/" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+<header class="header"> 
+    <h1>Type-Trader Investments</h1>
+   <h3>A Trade Stock Simulator</h3> 
+</header>
+{%include 'navbar.html'%}
+<div class="content" style="display:flex;">
+    <div id="left-section" class="content-flex">
+        <div class="design">
+            <h1>Questions? Comments? <br></br>
+                We would like to hear from you!</h1>
+            <form action="/contact/" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field }}
+                    </div>
+                {% endfor %}
+                <input class="submission" type="submit" value="Submit">
+            </form>
         </div>
-    {% endfor %}
-    <input type="submit" value="Submit">
- </form>
+    </div>
+</div>
 {% endblock %}
