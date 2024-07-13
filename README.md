@@ -1,12 +1,31 @@
 # Gillian Ramirez
 
-Overview: My fourth project I was tasked with in creating a paper trade stock simulator.
+Overview:
+A stock paper trading simulator that engages the user to dip their feet in the world of stock trading. 
+The user starts with $100k as their starting balance before buying shares of their preferred stocks. Stocks
+that are available to the user for now are Google, Microsoft, and Apple. 
 
-Functionality: Only the share selection, stock graph and share price generation work in the 1-page simulator. Still trying to work out contact form email connection. The 2-page simulator functions on the other hand include what 1-page offers, with the addition of successfully adding shares and selling shares of the second page 'portfolio'. Was definitely my most challenging task yet.
+Usage:
+- The user can view the history of stock price for Apple, Microsoft, and Google, displayed as a graph.
+- The user is given an initial balance of $100000 which updates with every sale and purchase of stocks. This balance saves in localstorage with each completed transaction. Which is also tracked by a history graph inside the portfolio page as well.
+- The user can see how many stocks they own from each company. These values update and save in localstorage with each completed transaction.
 
-Technologies used: Html, Css, Django, python, SQL, Plotly, Yfinance
+Technologies used: 
+- HTML
+- CSS
+- Django
+- Python
+- Plotly
+- Yfinance
+- Google Fonts
 
 Ideas for future improvement:
-- taking breaks
-- Deliver a full functioning web app
-- neat code (css didn't work halfway through, so I had to manually input style code)
+- Can view any stock company instead of the three companies I have listed above.
+- The user can successfully add as many stocks as they want each time, instead of being only able to purchase one share at a time.
+- Less negative space for my pages
+
+How to use:
+- Download zip file and use terminal to cd to the website directory
+- Use pip to install plotly and yfinance
+- Use python manage.py runserver
+
